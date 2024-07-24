@@ -1,0 +1,8 @@
+com/ecommerce/order_service/dto/OrderRequest.class
+com/ecommerce/order_service/controller/OrderController.class
+com/ecommerce/order_service/model/OrderLineItems.class
+com/ecommerce/order_service/repository/OrderRepository.class
+com/ecommerce/order_service/dto/OrderLineItemsDto.class
+com/ecommerce/order_service/OrderServiceApplication.class
+com/ecommerce/order_service/model/Order.class
+com/ecommerce/order_service/service/OrderService.class

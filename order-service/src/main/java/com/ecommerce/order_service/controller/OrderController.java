@@ -18,7 +18,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/save")
-    public ResponseEntity<Order> placeOrder(@RequestBody OrderRequest orderRequest){
+    public ResponseEntity<Order> placeOrder(@RequestBody OrderRequest orderRequest) throws IllegalAccessException {
         Order orderReq = orderService.placeOrder(orderRequest);
         return new ResponseEntity<>(orderReq , HttpStatus.CREATED);
     }

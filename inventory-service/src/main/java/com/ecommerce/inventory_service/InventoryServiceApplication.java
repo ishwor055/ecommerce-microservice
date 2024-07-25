@@ -13,8 +13,8 @@ public class InventoryServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(InventoryServiceApplication.class, args);
 	}
-
-	/*@Bean
+/*
+	@Bean
 	public CommandLineRunner loadData (InventoryRepository inventoryRepository){
 		return  args -> {
 

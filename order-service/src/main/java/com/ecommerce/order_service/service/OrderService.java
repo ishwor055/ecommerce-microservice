@@ -19,7 +19,7 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuider;
     public Order placeOrder(OrderRequest orderRequest) throws IllegalAccessException {
        Order order = new Order();
        order.setOrderNumber(UUID.randomUUID().toString());
@@ -37,7 +37,7 @@ public class OrderService {
         // building the queryparam
         //saving the response in InventoryResponse class*/
 
-       InventoryResponse[] inventoryResponsesList =  webClient.get()
+       InventoryResponse[] inventoryResponsesList =  webClientBuider.build().get()
                 .uri("http://inventory-service/api/inventory" ,
                         uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
                 .retrieve()

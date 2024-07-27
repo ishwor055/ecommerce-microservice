@@ -9,16 +9,20 @@
         <outputRelativeToContentRoot value="true" />
         <module name="product-service" />
         <module name="order-service" />
+        <module name="discovery-server" />
         <module name="inventory-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ecommerce" target="17" />
       <module name="ecommerce - multimodule" target="17" />
+      <module name="TestModule" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="TestModule" options="-parameters" />
+      <module name="discovery-server" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="product-service" options="-parameters" />

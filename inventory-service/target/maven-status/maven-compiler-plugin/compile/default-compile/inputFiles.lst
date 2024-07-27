@@ -1,0 +1,6 @@
+/Users/ishworkhadka/Desktop/microservices/ecommerce - multimodule/inventory-service/src/main/java/com/ecommerce/inventory_service/InventoryServiceApplication.java
+/Users/ishworkhadka/Desktop/microservices/ecommerce - multimodule/inventory-service/src/main/java/com/ecommerce/inventory_service/controller/InventoryController.java
+/Users/ishworkhadka/Desktop/microservices/ecommerce - multimodule/inventory-service/src/main/java/com/ecommerce/inventory_service/dto/InventoryResponse.java
+/Users/ishworkhadka/Desktop/microservices/ecommerce - multimodule/inventory-service/src/main/java/com/ecommerce/inventory_service/model/Inventory.java
+/Users/ishworkhadka/Desktop/microservices/ecommerce - multimodule/inventory-service/src/main/java/com/ecommerce/inventory_service/repository/InventoryRepository.java
+/Users/ishworkhadka/Desktop/microservices/ecommerce - multimodule/inventory-service/src/main/java/com/ecommerce/inventory_service/service/InventoryService.java

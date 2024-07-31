@@ -14,13 +14,21 @@ public class InventoryService {
     private final InventoryRepository inventoryRepository;
 
     @Transactional(readOnly = true)
-    public List<InventoryResponse> isInStock(List<String> skuCode){
-        return inventoryRepository.findBySkuCodeIn(skuCode).stream()
+    public List<InventoryResponse> isInStock(List<String> skuCode) {
+
+        List<InventoryResponse> responses = inventoryRepository.findBySkuCodeIn(skuCode).stream()
                 .map(inventory ->
-                    InventoryResponse.builder()
-                            .skuCode(inventory.getSkuCode())
-                            .isInStock(inventory.getQuantity() > 0)
-                            .build()
+                        InventoryResponse.builder()
+                                .skuCode(inventory.getSkuCode())
+                                .isInStock(inventory.getQuantity() > 0)
+                                .build()
                 ).toList();
+
+        // Log the responses for debugging
+        responses.forEach(response ->
+                System.out.println("SKU Code: " + response.getSkuCode() + ", In Stock: " + response.isInStock())
+        );
+
+        return responses;
     }
 }

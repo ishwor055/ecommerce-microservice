@@ -3,11 +3,13 @@ package com.ecommerce.order_service.service;
 import com.ecommerce.order_service.dto.InventoryResponse;
 import com.ecommerce.order_service.dto.OrderLineItemsDto;
 import com.ecommerce.order_service.dto.OrderRequest;
+import com.ecommerce.order_service.event.OrderPlacedEvent;
 import com.ecommerce.order_service.model.Order;
 import com.ecommerce.order_service.model.OrderLineItems;
 import com.ecommerce.order_service.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -25,6 +27,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuider;
+    private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 
     public Order placeOrder(OrderRequest orderRequest) throws IllegalAccessException {
         Order order = new Order();
@@ -68,8 +71,10 @@ public class OrderService {
         // Check if all items are in stock
         boolean allMatch = skuCodes.stream().allMatch(inStockSkuCodes::contains);
 
-        if (allMatch ) {
-            return orderRepository.save(order);
+        if (allMatch) {
+            Order order1 =  orderRepository.save(order);
+            kafkaTemplate.send("notification" , new OrderPlacedEvent(order.getOrderNumber()));
+            return order1;
         } else {
             throw new IllegalAccessException("One or more products are out of stock");
         }
